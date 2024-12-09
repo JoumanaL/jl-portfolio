@@ -1,0 +1,859 @@
+/* Root Colors */
+:root {
+    --accent-blue: black;
+    --light-gray: #ffffff;
+    --dark-gray: black;
+    --white: #ffffff;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animation CSS */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    line-height: 1.6;
+    transition: background-color 1s ease, color 1s ease;
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100%; /* Limite la largeur de l'élément */
+  
+}
+
+/* Menu Burger */
+.burger-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer;
+    color: var(--white); /* Par défaut, blanc */
+    max-width: 100%; /* Limite la largeur de l'élément */
+
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: currentColor;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Liens du menu burger */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Cacher le menu */
+    height: 100%;
+    width: 60%;
+    background-color: var(--white);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transition: right 0.3s ease;
+
+}
+
+
+
+.nav-links.active {
+    right: 0; /* Faire apparaître le menu */
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--dark-gray);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    text-decoration: none;
+    color: var(--accent-blue);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-blue);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+/* Menu burger en dehors du header */
+.burger-menu.blue {
+    color: var(--accent-blue); /* Bleu en dehors du header */
+}
+
+
+/* Header Section */
+.main-header {
+    height: 100vh;
+    background-color: var(--accent-blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header-content p {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* Navigation Menu */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne */
+    justify-content: center; /* Centre les liens horizontalement */
+    gap: 2rem; /* Ajoute de l'espacement entre les liens horizontalement et verticalement */
+    margin-top: 2rem; /* Ajuste l'espacement supérieur */
+    padding: 0 1rem; /* Ajoute un léger padding pour éviter de toucher les bords */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--white);
+    border-radius: 20px;
+    transition: all 0.3s;
+    width: auto; /* S'adapte au contenu */
+    min-width: 120px; /* Largeur minimale */
+    text-align: center; /* Centre le texte */
+}
+
+.nav-menu a:hover {
+    background-color: var(--white);
+    color: var(--accent-blue);
+}
+
+
+/* Scroll Arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: var(--white);
+    text-decoration: none;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 7rem 7rem; /* Ajoute plus d'espace en haut et en bas */
+    max-width: 1200px;
+    margin: 1rem auto; /* Ajuste les marges extérieures */
+}
+
+    
+
+/* Conteneur de la photo */
+.photo-container {
+    flex-basis: 300px; /* Largeur fixe pour le conteneur photo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.photo-frame {
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Conteneur "À Propos" */
+.about-container {
+    flex: 1; /* Prend tout l'espace restant */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: transparent;
+    border-color: 1px solid var(--dark-gray);
+    color: var(--dark-gray); 
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espace interne pour le contenu */
+}
+
+.about-container h2 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+}
+
+.about-container p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.about-container p span {
+    font-weight: bold ;
+}
+
+
+/* Style pour la fleche */
+.about-title img {
+    width: 2rem; /* Largeur de la flèche */
+    height: auto; /* Hauteur ajustée proportionnellement */
+}
+
+
+
+/* Bouton CV */
+.btn-cv {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 1px solid var(--dark-gray);
+    
+}
+
+.btn-cv:hover {
+    background-color: var(--accent-blue);
+    color: var(--white);
+}
+
+
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .photo-container {
+        margin-bottom: 1rem;
+    }
+}
+
+
+
+
+
+/* Section Formations */
+.formation-section {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 1rem;
+    color: var(--dark-gray);
+}
+
+.formation-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--light-gray);
+    margin-bottom: 2rem;
+}
+
+/* Style pour l'image */
+.formation-section img {
+    width: 3rem;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cartes de formations */
+.formation-card {
+    background-color: var(--light-gray);
+    border: 1px solid var(--dark-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+
+/* En-tête de la carte */
+.formation-card .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.formation-card .header .date-range {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+    background-color: var(--accent-blue);
+    padding: 0.3rem 0.6rem;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.formation-card .header .institution {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+/* Description de la carte */
+.formation-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+/* Pied de la carte */
+.formation-card .footer {
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-align: right;
+}
+
+
+
+
+
+
+/* Section Compétences */
+.skills-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 1rem;
+    color: var(--dark-gray);
+}
+
+.skills-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--accent-blue);
+    margin-bottom: 3rem;
+}
+
+/* Conteneur principal en flexbox */
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap; /* S'adapte pour petits écrans */
+    margin-bottom: 2rem;
+}
+
+/* Conteneur gauche et droit */
+.skills-left, .skills-right {
+    flex: 1; /* Prend un espace égal */
+    min-width: 300px; /* Largeur minimale */
+    background-color: var(--light-gray); /* Fond clair */
+    border: 1px solid var(--dark-gray);
+    border-radius: 10px; /* Coins arrondis */
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Titres des conteneurs */
+.skills-left h3, .skills-right h3, .skills-bottom h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-blue);
+}
+
+/* Logos des logiciels */
+.logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.logo-container img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+
+.logo-container img:hover {
+    transform: scale(1.1);
+    
+}
+
+/* Liste de Hard Skills */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.skills-list li {
+    margin-bottom: 1rem;
+}
+
+.skills-list span {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+/* Barre de compétences */
+.skill-bar {
+    height: 10px;
+    width: 100%;
+    background-color: var(--light-gray);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-bar .filled-bar {
+    height: 100%;
+    background-color: var(--accent-blue);
+    border-radius: 5px 0 0 5px;
+    transition: width 0.3s ease;
+}
+
+/* Conteneur bas */
+.skills-bottom {
+    background-color: var(--light-gray); /* Fond clair */
+    border: 1px solid var(--dark-gray);
+    border-radius: 10px; /* Coins arrondis */
+    padding: 1.5rem;
+}
+
+/* Soft Skills List */
+.soft-skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.soft-skills-list li {
+    background-color: var(--white);
+    color: var(--dark-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border-color: var();
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.soft-skills-list li:hover {
+    text-decoration: none;
+    color: var(--accent-blue);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-blue);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+
+/* Section Projects */
+.projects-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centrage horizontal */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.projects-title {
+    margin-bottom: 3rem;
+}
+
+.projects-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--light-gray);
+    margin-bottom: 2rem;
+}
+
+
+.projects-title h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.projects-title p {
+    color: #aaaaaa;
+    font-size: 3rem;
+    line-height: 1.5;
+    margin: 0 auto; /* Centre le texte sous le titre */
+    max-width: 600px; /* Limite la largeur */
+    margin-bottom: 4rem;
+
+}
+
+/* Horizontal Projects Container */
+.projects-container {
+    display: flex;
+    gap: 0.5rem; /* Espacement entre les cartes */
+    overflow-x: auto; /* Scroll horizontal si le contenu dépasse */
+    scroll-behavior: smooth; /* Animation fluide pour le scroll */
+    padding-bottom: 1rem; /* Ajoute de l'espace sous les cartes */
+    margin-top: 30px;
+}
+
+/* Project Card */
+.project-card {
+    flex: 0 0 200px; /* Taille initiale des cartes */
+    height: 400px;
+    background-color: #ffffff;
+    color: #121212;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajuste l'image au conteneur */
+    transition: transform 0.3s ease; /* Effet de zoom au survol */
+}
+
+.project-card .imgg {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    top: 50%; /* Position initiale, centré verticalement */
+    left: 50%; /* Position initiale, centré horizontalement */
+    transform: translate(-50%, -50%); /* Assure le centrage exact */
+    opacity: 0; /* Masque l'image par défaut */
+    transition: opacity 0.3s ease-in-out; /* Transition douce lors de l'apparition */
+}
+
+.project-card:hover .imgg {
+    opacity: 1; /* Rendre l'image visible au survol */
+}
+
+
+/* Hover Effect */
+.project-card img:hover {
+    flex: 0 0 300px; /* Agrandit la carte */
+    opacity: 0.5;
+}
+
+.project-card:hover {
+    flex: 0 0 300px; /* Agrandit la carte */
+}
+
+.project-card:hover img {
+    transform: scale(1.2); /* Zoom de l'image */
+}
+
+
+@media (max-width: 768px) {
+    .imgg {
+    opacity: 0;
+    }
+}
+
+
+
+/* Animation d'apparition */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Classe pour afficher les éléments */
+.scroll-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/*Contact */
+
+.contact-section {
+    text-align: center;
+    padding: 2rem 1rem;
+ 
+}
+
+.contact-section h2 {
+    margin-bottom: 2rem;
+ 
+}
+
+.contact-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+}
+
+.contact-card {
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid #000;;
+    color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.contact-card.email{
+    width: auto;
+    height: 150px;
+    background-color: white;
+    border: 1px solid #000;;
+    color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    
+}
+
+
+
+.contact-card {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.contact-card .icon img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.contact-card .details p {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: #fff;
+    color: black;
+    text-decoration: none;
+
+}
+
+.contact-card::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: #fff;
+    color: black;
+    text-decoration: none;
+}
+
+.contact-card .details a{
+    color: black;
+    text-decoration: underline bla;
+}
+
+@media (max-width: 768px) {
+    .contact-cards {
+        display: flex;
+        flex-direction: column; /* Change la disposition en colonne */
+        align-items: center; /* Centre les éléments */
+        gap: 1rem;
+    }
+
+    .contact-card.email {
+        margin-bottom: 1rem; /* Ajoute un espacement sous la case email */
+    }
+}
+
+
+
+
+/* Animation fluide de scroll */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease-in-out;
+}
+
+.scroll-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .projects-container,
+    .skills-container {
+        flex-direction: column;
+    }
+
+    .contact-cards {
+        flex-direction: column;
+    }
+}
+
+.piedpg{
+
+    height: 20vh;
+    background-color: var(--accent-blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+
+}
+
+.piedpg p {
+    color: #ffffff;
+}
+
+.arrow {
+    
+        bottom: 20px;
+        font-size: 2rem;
+        color: var(--white);
+        text-decoration: none;
+        cursor: pointer;
+        text-align: right;
+    }
+    
+
+
+
+

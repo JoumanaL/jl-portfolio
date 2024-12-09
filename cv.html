@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon-2.ico" type="image/x-icon">
+    <link rel="icon" href="favicon-2.ico" type="image/x-icon">
+    <title>Mon CV</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .burger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            font-size: 1.5rem;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .nav-links.active {
+            right: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: black;
+        }
+
+        /* PDF Embed */
+        embed {
+            flex: 1;
+            width: 100%;
+            height: calc(100vh - 60px); /* Ajuste la hauteur pour exclure le menu burger */
+            border: none;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .burger-menu {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                width: 60%; /* Prend tout l'écran sur mobile */
+            }
+            .img {
+                margin-top: 70px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Burger -->
+    <div class="burger-menu">
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html#hero">À propos</a>
+            <a href="index.html#formations">Formations</a>
+            <a href="index.html#projects">Projets</a>
+            <a href="index.html#competences">Compétences</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="cv.html">CV</a>
+        </div>
+    </div>
+
+   <img class="img" src="img/cv.png" alt="">
+
+    <!-- JavaScript -->
+    <script>
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Toggle menu burger
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu burger on outside click
+        document.addEventListener('click', (event) => {
+            if (!burger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

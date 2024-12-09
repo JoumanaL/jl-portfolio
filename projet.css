@@ -1,0 +1,282 @@
+/* Root Colors */
+:root {
+    --accent-blue: black;
+    --light-gray: #ffffff;
+    --dark-gray: black;
+    --white: #ffffff;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* Menu Burger */
+.burger-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer;
+    color: var(--white); /* Par défaut, blanc */
+    max-width: 100%; /* Limite la largeur de l'élément */
+
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: currentColor;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Liens du menu burger */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Cacher le menu */
+    height: 100%;
+    width: 60%;
+    background-color: var(--white);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transition: right 0.3s ease;
+
+}
+
+
+
+.nav-links.active {
+    right: 0; /* Faire apparaître le menu */
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--dark-gray);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    text-decoration: none;
+    color: var(--accent-blue);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-blue);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+/* Menu burger en dehors du header */
+.burger-menu.blue {
+    color: var(--accent-blue); /* Bleu en dehors du header */
+}
+
+
+
+/* Header Section */
+.main-header {
+    height: 100vh;
+    background-color: var(--accent-blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header-content p {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* Navigation Menu */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne */
+    justify-content: center; /* Centre les liens horizontalement */
+    gap: 2rem; /* Ajoute de l'espacement entre les liens horizontalement et verticalement */
+    margin-top: 2rem; /* Ajuste l'espacement supérieur */
+    padding: 0 1rem; /* Ajoute un léger padding pour éviter de toucher les bords */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--white);
+    border-radius: 20px;
+    transition: all 0.3s;
+    width: auto; /* S'adapte au contenu */
+    min-width: 120px; /* Largeur minimale */
+    text-align: center; /* Centre le texte */
+}
+
+.nav-menu a:hover {
+    background-color: var(--white);
+    color: var(--accent-blue);
+}
+
+/* Projects Section */
+.projects-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.projects-title h2 {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Project Container */
+.project-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+/* Project Image */
+.project-image {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Project Details */
+.project-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-details h3 {
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+}
+
+.project-details p {
+    font-size: 1rem;
+    color: var(--dark-gray);
+}
+
+.btn p {
+    color: black;
+}
+
+.btn {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--dark-gray);
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--dark-gray);
+}
+
+.btn:hover p {
+    color: white;
+}
+
+.tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+
+}
+
+
+.tech-icons img {
+    width: 40px;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Footer */
+.piedpg {
+    height: 10vh;
+    background-color: var(--accent-blue);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.piedpg p {
+    margin: 0;
+}
+
